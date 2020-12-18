@@ -23,6 +23,9 @@ public class Main {
                     printResult(multiply(readMatrix(scanner, "first"),
                             readMatrix(scanner, "second")));
                     break;
+                case 4:
+                    runTransposeMenu(scanner);
+                    break;
                 case 0:
                     System.exit(0);
             }
@@ -140,6 +143,7 @@ public class Main {
         System.out.println("1. Add matrices");
         System.out.println("2. Multiply matrix by a constant");
         System.out.println("3. Multiply matrices");
+        System.out.println("4. Transpose matrix");
         System.out.println("0. Exit");
     }
 
@@ -174,5 +178,55 @@ public class Main {
     public static double readConstant(Scanner scanner) {
         System.out.print("Enter constant: ");
         return scanner.nextDouble();
+    }
+
+    public static void printTransposeMenu() {
+        System.out.println("1. Main diagonal");
+        System.out.println("2. Side diagonal");
+        System.out.println("3. Vertical line");
+        System.out.println("4. Horizontal line");
+    }
+
+    public static void runTransposeMenu(Scanner scanner) {
+        printTransposeMenu();
+        switch (getUserChoice(scanner)) {
+            case 1:
+                printResult(transposeMain(readMatrix(scanner, "")));
+                break;
+            case 2:
+                printResult(transposeSide(readMatrix(scanner, "")));
+                break;
+            case 3:
+                printResult(transposeVertical(readMatrix(scanner, "")));
+                break;
+            case 4:
+                printResult(transposeHorizontal(readMatrix(scanner, "")));
+                break;
+        }
+    }
+
+    public static double[][] transposeMain(double[][] matrix) {
+        double[][] result = new double[matrix[ROW].length][matrix.length];
+        for (int i = 0; i < result.length; i++) {
+            for (int j = 0; j < result[ROW].length; j++) {
+                result[i][j] = matrix[j][i];
+            }
+        }
+        return result;
+    }
+
+    public static double[][] transposeSide(double[][] matrix) {
+        double[][] result = new double[matrix[ROW].length][matrix.length];
+        return result;
+    }
+
+    public static double[][] transposeVertical(double[][] matrix) {
+        double[][] result = new double[matrix[ROW].length][matrix.length];
+        return result;
+    }
+
+    public static double[][] transposeHorizontal(double[][] matrix) {
+        double[][] result = new double[matrix[ROW].length][matrix.length];
+        return result;
     }
 }
